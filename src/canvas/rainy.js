@@ -1,15 +1,21 @@
-const rain = () => {
+import Raining from './rainyday';
+
+const Rainy = (() => {
+
   const startRaining = () => {
-    const image = document.getElementById('background');
-    image.onload = () => {
-        let engine = new RainyDay({
-            image: this
-        });
-        engine.rain([
-            [3, 2, 2]
-        ], 100);
+    const imageEl = document.querySelector('body');
+    imageEl.crossOrigin = 'anonymous';
+    console.log('loaded!')
+		var engine = new Raining.RainyDay({
+			image: imageEl
+		});
+		engine.rain([
+			[0, 2, 200],
+			[3, 3, 1]
+		], 100);
     };
-    image.crossOrigin = 'anonymous';
-    image.src = 'http://i.imgur.com/U1Tqqdw.jpg';
-  }
-}
+
+  return {startRaining}
+})();
+
+export default Rainy;

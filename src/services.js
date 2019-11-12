@@ -13,7 +13,6 @@ const Service = (() => {
     .then(response => response.json())
     .then(data => {DomManger.currentJsonData(data)})
     .catch(err => console.log(err))
-    console.log('here mf!')
   }
 
   return {getData, currentData};

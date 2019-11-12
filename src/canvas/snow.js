@@ -81,18 +81,23 @@ const Snow = (() => {
     }
   };
 
-  const updateSnowFlakes = () => {
+  const clearCanvas = () => {
     context.clearRect(0, 0, width, height);
+  }
+
+  const updateSnowFlakes = () => {
+    clearCanvas();
     drawSnowFlakes();
     moveFlakes();
   };
+
 
   const startSnowing = () => {
     setInterval(updateSnowFlakes, 50);
     createSnowFlakes();
   }
 
-  return {startSnowing}
+  return {startSnowing, clearCanvas}
 
 })();
 
