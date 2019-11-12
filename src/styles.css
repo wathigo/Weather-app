@@ -6,7 +6,7 @@ body {
 }
 
 canvas{
-  z-index: 2;
+  z-index: 10;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -15,21 +15,38 @@ canvas{
 .content{
   width: 80%;
   margin: 0 auto;
-  text-align: center;
   margin-top: 15vh;
   color: #fff;
   margin-bottom: 0;
 }
 
 .upper{
+  padding-left: 2em;
+  position: relative;
   background: linear-gradient(
       rgba(0, 0, 0, 0.3),
       rgba(0, 0, 0, 0.6)
     );
 }
 
-h2{
+.currenttime {
+  position: absolute;
+  right: 5em;
+  top: 5em;
+}
+
+h2, h3, p{
   margin: 0;
+}
+
+.location{
+  padding-top: 1.2em;
+}
+
+.description{
+  font-size: 0.8em;
+  opacity: 0.6;
+  margin-bottom: 0.9em;
 }
 
 .left, .right{
