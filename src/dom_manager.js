@@ -3,9 +3,11 @@ import Snow from './canvas/snow';
 
 const DomManger = (() => {
 
+  const defaultLocation = 'London,uk';
+
     const startApp = () => {
       Snow.startSnowing();
-      Service.getData('London,uk');
+      Service.getData(defaultLocation);
     }
 
     return {startApp}

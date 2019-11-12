@@ -4,3 +4,64 @@ body {
   background-position: center;
     background-attachment: fixed;
 }
+
+canvas{
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.content{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 15vh;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.upper{
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.6)
+    );
+}
+
+h2{
+  margin: 0;
+}
+
+.left, .right{
+  display: inline-block;
+  width: 50%;
+  margin: 0;
+  padding: 0;
+}
+
+.content .left{
+  background: linear-gradient(
+      rgba(33,245,255, 0.3),
+      rgba(33,245,255, 0.6)
+    );
+    float: left;
+}
+
+.weathercont .right{
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255,255, 0.4)
+    );
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  width: 70%;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+ul li{
+  list-style: none;
+}

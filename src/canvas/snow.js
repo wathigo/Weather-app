@@ -50,6 +50,7 @@ const Snow = (() => {
       gradient.addColorStop(0, 'rgba(255, 255, 255,' + particleArray[i].opacity + ')');
       gradient.addColorStop(.8, 'rgba(210, 236, 242,' + particleArray[i].opacity + ')');
       gradient.addColorStop(1, 'rgba(237, 247, 249,' + particleArray[i].opacity + ')');
+      
 
       context.beginPath();
       context.arc(
