@@ -43,9 +43,10 @@ const DomManger = (() => {
       document.querySelector('.location').textContent = data.name;
       document.querySelector('.description').textContent = data.weather[0].description;
       document.querySelector('.temp').textContent = data.main.temp + '°c';
-      if((checkRain(main))){
+      if(!(checkRain(main))){
         console.log("True");
-        document.querySelector('canvas').style.display = 'none';
+        document.querySelector('.snow').style.display = 'none';
+        document.querySelector('body').backgroundImage = 'none'
         Rainy.startRaining();
       }
       startTime();
