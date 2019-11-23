@@ -127,6 +127,7 @@ const Raining = (() => {
     canvas.style.position = position
     canvas.style.top = top
     canvas.style.left = left
+    canvas.setAttribute('id', 'rainy-canvas');
     canvas.width = width
     canvas.height = height
     if (this.img.style.zIndex) {
