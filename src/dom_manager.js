@@ -85,22 +85,34 @@ const DomManger = (() => {
           node.classList.add('.wind-rotation');
         })
       }else if(checkSun(main)){
-        document.querySelector('.snow').style.display = 'none';
-        document.querySelector('rainy-canvas').style.display = 'none';
+        if(document.querySelector('.snow') !== null){
+          document.querySelector('.snow').style.display = 'none';
+        }
+        if(document.querySelector('#rainy-canvas') !== null){
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
         document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
       }else if(checkClouds(main)){
         console.log('clouds@')
-        document.querySelector('.snow').style.display = 'none';
+        if(document.querySelector('.snow') !== null){
+          document.querySelector('.snow').style.display = 'none';
+        }
+        if(document.querySelector('#rainy-canvas') !== null){
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
         document.querySelector('body').backgroundImage = 'none';
-        document.querySelector('#rainy-canvas').style.display = 'none';
         document.querySelectorAll('.cloudLayer').forEach(node => {
           node.style.display = 'block';
         })
         Transform.initializeTranformations();
       }else {
-        document.querySelector('.snow').style.display = 'none';
+        if(document.querySelector('.snow') !== null ){
+          document.querySelector('.snow').style.display = 'none';
+        }
         document.querySelector('body').backgroundImage = 'none';
-        document.querySelector('#rainy-canvas').style.display = 'none';
+        if(document.querySelector('#rainy-canvas') !== null ){
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
         document.querySelectorAll('.cloudLayer').forEach(node => {
           node.style.display = 'none';
         })
