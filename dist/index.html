@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Weather app</title>
     <link rel="stylesheet" href="../src/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Saira+Condensed&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="viewport" >
@@ -12,62 +13,18 @@
     </div>
     <canvas id="canvas" class="snow"></canvas>
     <div class="content">
-      <img id="background" alt="background" src="../src/images/weathercont.jpg" />
-      <input type="text" name="location" value="" placeholder="Add a location">
-      <button type="button" name="button">Search</button>
-      <div class="weathercont">
-        <div class="upper">
-          <h3 class="location">LOCATION</h3>
-          <p class="description"></p>
-          <p>Now</p>
-          <h2 class="temp">10°c</h2>
-
-          <div class="currenttime">
-
-          </div>
-        </div>
-        <div class="left">
-          <ul>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-          </ul>
-        </div>
-        <div class="right">
-          <ul>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-            <li>
-              <p>Partly Sunny</p>
-              <h5>3 %</h5>
-            </li>
-          </ul>
-        </div>
+      <div class="search">
+        <input type="text" name="location" id="location" value="" placeholder="Add a location">
+        <button type="button" name="button" id="search">Search</button>
       </div>
-    </div>
+      <div class="weathercont">
+        <h3 class="location">LOCATION</h3>
+        <p class="description"></p>
+        <p>Now</p>
+        <h2 class="temp">10°c</h2>
+
+        <div class="currenttime">
+        </div>
     <script src="https://github.com/mubaidr/rainyday.js/blob/master/docs/js/rainyday.min.js"></script>
     <script src="main.js"></script>
   </body>

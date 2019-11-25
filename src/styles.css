@@ -23,25 +23,42 @@ canvas{
   bottom: 0;
   width: 100vw;
   height: 100vh;
+  overflow: scroll;
 }
 
 .content{
   position: relative;
   z-index: 13;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   margin-top: 15vh;
   color: #fff;
   margin-bottom: 0;
 }
 
-.upper{
-  padding-left: 2em;
+.search{
+  margin-left: 65%;
+}
+
+.search input, .search button{
+  height: 2em;
+  border-radius: 1.2em;
+}
+
+.search input{
+  padding: 0.8em;
+}
+
+.weathercont{
+  padding: 2em;
   position: relative;
   background: linear-gradient(
       rgba(0, 0, 0, 0.3),
       rgba(0, 0, 0, 0.6)
     );
+
+  border-radius: 3em 2em;
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .currenttime {
@@ -64,14 +81,14 @@ h2, h3, p{
   margin-bottom: 0.9em;
 }
 
-.left, .right{
+/* .left, .right{
   display: inline-block;
   width: 50%;
   margin: 0;
   padding: 0;
-}
+} */
 
-.content .left{
+/* .content .left{
   background: linear-gradient(
       rgba(33,245,255, 0.3),
       rgba(33,245,255, 0.6)
@@ -84,9 +101,9 @@ h2, h3, p{
       rgba(255, 255, 255, 0.2),
       rgba(255, 255,255, 0.4)
     );
-}
+} */
 
-ul{
+/* ul{
   margin: 0;
   padding: 0;
   width: 70%;
@@ -96,7 +113,7 @@ ul{
 
 ul li{
   list-style: none;
-}
+} */
 
 /* cloud simulation */
 #viewport {
@@ -129,7 +146,6 @@ ul li{
   position: absolute;
   top: 256px;
   width: 20px;
-  background-color: #a52a2a;
 }
 
 .cloudLayer {
@@ -141,6 +157,10 @@ ul li{
   top: 50%;
   width: 256px;
   animation: rotation 50s infinite linear;
+}
+
+.wind-rotation{
+  animation: rotation 100s infinite linear;
 }
 
 @keyframes rotation {

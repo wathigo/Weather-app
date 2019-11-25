@@ -6,7 +6,6 @@ const Rainy = (() => {
     let imageUrl = 'https://i.imgur.com/wvErRZP.jpg';
     let image = new Image;
     image.crossOrigin = "Anonymous";
-    image.classList.add('background')
     image.onload = function () {
 					var engine = new Raining.RainyDay({
 						image: image,
