@@ -9,12 +9,12 @@ const Rainy = (() => {
     image.classList.add('background')
     image.onload = function () {
 					var engine = new Raining.RainyDay({
-						image: image
+						image: image,
+            blur: 0
 					});
-					engine.rain([
-						[0, 2, 200],
-						[3, 3, 1]
-					], 100);
+          engine.rain([
+            [3, 3, 0.1]
+            ], 33);
 				};
         image.src = imageUrl
   };
