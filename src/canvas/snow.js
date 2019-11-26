@@ -1,28 +1,27 @@
 const Snow = (() => {
   const canvas = document.querySelector('#canvas');
-  let context = canvas.getContext('2d');
+  const context = canvas.getContext('2d');
   const particlesCount = 246;
-  let particleArray = []
-  let width, height;
+  const particleArray = [];
+  let width; let
+    height;
   width = canvas.width = window.innerWidth;
   height = canvas.height = window.innerHeight;
 
-  const random = (min, max) => {
-    return min + Math.random() * (max - min + 1);
-  }
+  const random = (min, max) => min + Math.random() * (max - min + 1);
 
   const resizeCanvas = (evt) => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
-  }
+  };
 
   window.addEventListener('resize', (evt) => {
     resizeCanvas(evt);
   });
 
   const createSnowFlakes = () => {
-    let i = 0
-    while(i < particlesCount) {
+    let i = 0;
+    while (i < particlesCount) {
       particleArray.push({
         x: Math.random() * width,
         y: Math.random() * height,
@@ -37,14 +36,14 @@ const Snow = (() => {
 
   const drawSnowFlakes = () => {
     let i = 0;
-    while(i < particleArray.length){
-      let gradient = context.createRadialGradient(
+    while (i < particleArray.length) {
+      const gradient = context.createRadialGradient(
         particleArray[i].x,
         particleArray[i].y,
         0,
         particleArray[i].x,
         particleArray[i].y,
-        particleArray[i].radius
+        particleArray[i].radius,
       );
 
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3');
@@ -58,22 +57,22 @@ const Snow = (() => {
         particleArray[i].y,
         particleArray[i].radius,
         0,
-        Math.PI*2,
-        false
+        Math.PI * 2,
+        false,
       );
       context.fillStyle = gradient;
       context.fill();
       i += 1;
     }
-  }
+  };
 
   const moveFlakes = () => {
     let i = 0;
-    while(i < particleArray.length){
+    while (i < particleArray.length) {
       particleArray[i].x += particleArray[i].speedX;
       particleArray[i].y += particleArray[i].speedY;
 
-      if(particleArray[i].y > height){
+      if (particleArray[i].y > height) {
         particleArray[i].x = Math.random() * width * 1.5;
         particleArray[i].y = -50;
       }
@@ -83,7 +82,7 @@ const Snow = (() => {
 
   const clearCanvas = () => {
     context.clearRect(0, 0, width, height);
-  }
+  };
 
   const updateSnowFlakes = () => {
     clearCanvas();
@@ -95,10 +94,9 @@ const Snow = (() => {
   const startSnowing = () => {
     setInterval(updateSnowFlakes, 50);
     createSnowFlakes();
-  }
+  };
 
-  return {startSnowing, clearCanvas}
-
+  return { startSnowing, clearCanvas };
 })();
 
 export default Snow;

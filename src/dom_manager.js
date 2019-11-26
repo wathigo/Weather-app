@@ -4,7 +4,6 @@ import Rainy from './canvas/rainy';
 import Transform from './canvas/transformations';
 
 const DomManger = (() => {
-
   const rain = /RAIN/g;
   const drizzle = /DRIZZLE/g;
   const wind = /WIND/g;
@@ -16,141 +15,125 @@ const DomManger = (() => {
   const fog = /FOG/g;
 
   const defaultLocation = 'London,uk';
-  let currentData = '';
+  const currentData = '';
 
-  const checkRain = (str) => {
-    return str.toUpperCase().match(rain) || str.toUpperCase().match(drizzle);
-  }
+  const checkRain = (str) => str.toUpperCase().match(rain) || str.toUpperCase().match(drizzle);
 
-  const checkWind = (str) => {
-    return str.toUpperCase().match(wind)
-  }
+  const checkWind = (str) => str.toUpperCase().match(wind);
 
-  const checkSun = (str) => {
-    return str.toUpperCase().match(sun)
-  }
+  const checkSun = (str) => str.toUpperCase().match(sun);
 
-  const checkClouds = (str) => {
-    return str.toUpperCase().match(clouds);
-  }
+  const checkClouds = (str) => str.toUpperCase().match(clouds);
 
-  const clearSky = (str) => {
-    return str.toUpperCase().match(clear);
-  }
+  const clearSky = (str) => str.toUpperCase().match(clear);
 
-  const checkSnow = (str) => {
-    return str.toUpperCase().match(snow) || str.toUpperCase().match(mist) || str.toUpperCase().match(fog);
-  }
+  const checkSnow = (str) => str.toUpperCase().match(snow) || str.toUpperCase().match(mist) || str.toUpperCase().match(fog);
 
   const checkTime = (i) => {
     if (i < 10) {
-      i = "0" + i;
+      i = `0${i}`;
     }
     return i;
-  }
+  };
 
   const startTime = () => {
-    let today = new Date();
-    let h = today.getHours();
+    const today = new Date();
+    const h = today.getHours();
     let m = today.getMinutes();
     let s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
-    document.querySelector('.currenttime').innerHTML = h + ":" + m + ":" + s;
-    setTimeout(function() {
-      startTime()
-      }, 500);
-    }
-    const handleEvent = () => {
-      let location = document.querySelector('#location').value;
-      Service.getData(location);
-      Service.getDataF(location);
-    }
-
-    const startApp = () => {
-      Service.getData(defaultLocation);
-      Service.getDataF(defaultLocation);
-      document.querySelector('#search').addEventListener('click', () => {
-        handleEvent();
-      })
-      Snow.startSnowing();
-    }
-
-    const currentJsonData = (data) => {
-      console.log(data);
-      if((typeof data) === 'number'){
-        let temp = document.querySelector('.temp').textContent + '  ' + data + 'F'
-        document.querySelector('.temp').textContent = temp
-      }else{
-        let main = data.weather[0].main;
-        document.querySelector('.location').textContent = data.name;
-        document.querySelector('.description').textContent = data.weather[0].description;
-        document.querySelector('.temp').textContent = data.main.temp + '°c';
-        if(checkRain(main)){
-          document.querySelector('.snow').style.display = 'none';
-          document.querySelector('body').backgroundImage = 'none';
-          Rainy.startRaining();
-        }else if(checkWind(main)){
-          document.querySelector('.snow').style.display = 'none';
-          document.querySelector('body').backgroundImage = 'none';
-          Transform.initializeTranformations();
-          document.querySelectorAll('.cloudLayer').forEach(node => {
-            node.classList.add('.wind-rotation');
-          })
-        }else if(checkSun(main)){
-          if(document.querySelector('.snow') !== null){
-            document.querySelector('.snow').style.display = 'none';
-          }
-          if(document.querySelector('#rainy-canvas') !== null){
-            document.querySelector('#rainy-canvas').style.display = 'none';
-          }
-          document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
-        }else if(checkClouds(main)){
-          console.log('clouds@')
-          if(document.querySelector('.snow') !== null){
-            document.querySelector('.snow').style.display = 'none';
-          }
-          if(document.querySelector('#rainy-canvas') !== null){
-            document.querySelector('#rainy-canvas').style.display = 'none';
-          }
-          document.querySelector('body').backgroundImage = 'none';
-          document.querySelectorAll('.cloudLayer').forEach(node => {
-            node.style.display = 'block';
-          })
-          Transform.initializeTranformations();
-        }else if(clearSky(main)){
-          if(document.querySelector('.snow') !== null ){
-            document.querySelector('.snow').style.display = 'none';
-          }
-          document.querySelector('body').backgroundImage = 'none';
-          if(document.querySelector('#rainy-canvas') !== null ){
-            document.querySelector('#rainy-canvas').style.display = 'none';
-          }
-          document.querySelectorAll('.cloudLayer').forEach(node => {
-            node.style.display = 'none';
-          })
-
-        }else if(checkSnow(main)){
-          console.log('Snowinbg')
-          if(document.querySelector('#rainy-canvas') !== null ){
-            document.querySelector('#rainy-canvas').style.display = 'none';
-          }
-          document.querySelectorAll('.cloudLayer').forEach(node => {
-            node.style.display = 'none';
-          })
-
-          document.querySelector('body').backgroundImage = 'url(./images/bg.jpg)';
-          document.querySelector('.snow').style.display = 'block';
-
-
-        }
-      }
-
+    document.querySelector('.currenttime').innerHTML = `${h}:${m}:${s}`;
+    setTimeout(() => {
       startTime();
+    }, 500);
+  };
+  const handleEvent = () => {
+    const location = document.querySelector('#location').value;
+    Service.getData(location);
+    Service.getDataF(location);
+  };
+
+  const startApp = () => {
+    Service.getData(defaultLocation);
+    Service.getDataF(defaultLocation);
+    document.querySelector('#search').addEventListener('click', () => {
+      handleEvent();
+    });
+    Snow.startSnowing();
+  };
+
+  const currentJsonData = (data) => {
+    console.log(data);
+    if ((typeof data) === 'number') {
+      const temp = `${document.querySelector('.temp').textContent}  ${data}F`;
+      document.querySelector('.temp').textContent = temp;
+    } else {
+      const { main } = data.weather[0];
+      document.querySelector('.location').textContent = data.name;
+      document.querySelector('.description').textContent = data.weather[0].description;
+      document.querySelector('.temp').textContent = `${data.main.temp}°c`;
+      if (checkRain(main)) {
+        document.querySelector('.snow').style.display = 'none';
+        document.querySelector('body').backgroundImage = 'none';
+        Rainy.startRaining();
+      } else if (checkWind(main)) {
+        document.querySelector('.snow').style.display = 'none';
+        document.querySelector('body').backgroundImage = 'none';
+        Transform.initializeTranformations();
+        document.querySelectorAll('.cloudLayer').forEach((node) => {
+          node.classList.add('.wind-rotation');
+        });
+      } else if (checkSun(main)) {
+        if (document.querySelector('.snow') !== null) {
+          document.querySelector('.snow').style.display = 'none';
+        }
+        if (document.querySelector('#rainy-canvas') !== null) {
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
+        document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
+      } else if (checkClouds(main)) {
+        console.log('clouds@');
+        if (document.querySelector('.snow') !== null) {
+          document.querySelector('.snow').style.display = 'none';
+        }
+        if (document.querySelector('#rainy-canvas') !== null) {
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
+        document.querySelector('body').backgroundImage = 'none';
+        document.querySelectorAll('.cloudLayer').forEach((node) => {
+          node.style.display = 'block';
+        });
+        Transform.initializeTranformations();
+      } else if (clearSky(main)) {
+        if (document.querySelector('.snow') !== null) {
+          document.querySelector('.snow').style.display = 'none';
+        }
+        document.querySelector('body').backgroundImage = 'none';
+        if (document.querySelector('#rainy-canvas') !== null) {
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
+        document.querySelectorAll('.cloudLayer').forEach((node) => {
+          node.style.display = 'none';
+        });
+      } else if (checkSnow(main)) {
+        console.log('Snowinbg');
+        if (document.querySelector('#rainy-canvas') !== null) {
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
+        document.querySelectorAll('.cloudLayer').forEach((node) => {
+          node.style.display = 'none';
+        });
+
+        document.querySelector('body').backgroundImage = 'url(./images/bg.jpg)';
+        document.querySelector('.snow').style.display = 'block';
+      }
     }
 
-    return {startApp, currentJsonData}
+    startTime();
+  };
 
-  })();
+  return { startApp, currentJsonData };
+})();
 
 export default DomManger;
