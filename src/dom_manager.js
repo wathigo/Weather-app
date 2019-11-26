@@ -11,6 +11,9 @@ const DomManger = (() => {
   const sun = /SUN/g;
   const clouds = /CLOUDS/g;
   const clear = /CLEAR/g;
+  const snow = /SNOW/g;
+  const mist = /MIST/g;
+  const fog = /FOG/g;
 
   const defaultLocation = 'London,uk';
   let currentData = '';
@@ -33,6 +36,10 @@ const DomManger = (() => {
 
   const clearSky = (str) => {
     return str.toUpperCase().match(clear);
+  }
+
+  const checkSnow = (str) => {
+    return str.toUpperCase().match(snow) || str.toUpperCase().match(mist) || str.toUpperCase().match(fog);
   }
 
   const checkTime = (i) => {
@@ -105,7 +112,7 @@ const DomManger = (() => {
           node.style.display = 'block';
         })
         Transform.initializeTranformations();
-      }else {
+      }else if(clearSky(main)){
         if(document.querySelector('.snow') !== null ){
           document.querySelector('.snow').style.display = 'none';
         }
@@ -116,6 +123,19 @@ const DomManger = (() => {
         document.querySelectorAll('.cloudLayer').forEach(node => {
           node.style.display = 'none';
         })
+
+      }else if(checkSnow(main)){
+        console.log('Snowinbg')
+        if(document.querySelector('#rainy-canvas') !== null ){
+          document.querySelector('#rainy-canvas').style.display = 'none';
+        }
+        document.querySelectorAll('.cloudLayer').forEach(node => {
+          node.style.display = 'none';
+        })
+
+        document.querySelector('body').backgroundImage = 'url(./images/bg.jpg)';
+        document.querySelector('.snow').style.display = 'block';
+
 
       }
       startTime();
