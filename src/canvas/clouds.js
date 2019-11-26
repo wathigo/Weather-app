@@ -60,7 +60,6 @@ const Clouds = (() => {
       cloud.style.transform = t;
 
       div.appendChild(cloud);
-      layers.push(cloud);
     }
 
     return div;
@@ -78,9 +77,8 @@ const Clouds = (() => {
     for (let j = 0; j < 10; j += 1) {
       objects.push(createCloud());
     }
-    const layers = document.querySelectorAll('.cloudLayer');
 
-    const nodeList = Array.from(layers);
+    const nodeList = Array.from(document.querySelectorAll('.cloudLayer'));
 
     update(worldXAngle, worldYAngle, nodeList);
   };
