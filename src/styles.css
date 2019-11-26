@@ -16,6 +16,10 @@ canvas{
   bottom: 0;
 }
 
+.errmsg{
+  display: none;
+}
+
 #rainy-canvas{
   z-index: 11 !important;
   top: 0 !important;

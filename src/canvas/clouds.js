@@ -1,5 +1,4 @@
 const Clouds = (() => {
-
   const update = (worldXAngle, worldYAngle, layers) => {
     for (let j = 0; j < layers.length; j += 1) {
       const layer = layers[j];
@@ -34,7 +33,7 @@ const Clouds = (() => {
   const createCloud = () => {
     const div = document.createElement('div');
     div.className = 'cloudBase';
-    var t = `translateX( ${randomX()}px ) \
+    let t = `translateX( ${randomX()}px ) \
       translateY( ${randomY()}px ) \
       translateZ( ${randomZ()}px )`;
     div.style.transform = t;
@@ -52,12 +51,12 @@ const Clouds = (() => {
         a: randomA(),
         s: randomS(),
       };
-      var t = `translateX( ${randomX()}px ) \
+      let d = `translateX( ${randomX()}px ) \
       translateY( ${randomY()}px ) \
       translateZ( ${randomZ()}px ) \
       rotateZ( ${randomA()}deg ) \
       scale( ${randomS()} )`;
-      cloud.style.transform = t;
+      cloud.style.transform = d;
 
       div.appendChild(cloud);
     }

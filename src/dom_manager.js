@@ -13,9 +13,9 @@ const DomManger = (() => {
   const snow = /SNOW/g;
   const mist = /MIST/g;
   const fog = /FOG/g;
+  const errMsg = document.querySelector('.errmsg');
 
   const defaultLocation = 'London,uk';
-  const currentData = '';
 
   const checkRain = (str) => str.toUpperCase().match(rain) || str.toUpperCase().match(drizzle);
 
@@ -50,13 +50,11 @@ const DomManger = (() => {
   };
   const handleEvent = () => {
     const location = document.querySelector('#location').value;
-    Service.getData(location);
-    Service.getDataF(location);
+    Service.getData(location, errMsg);
   };
 
   const startApp = () => {
-    Service.getData(defaultLocation);
-    Service.getDataF(defaultLocation);
+    Service.getData(defaultLocation, errMsg);
     document.querySelector('#search').addEventListener('click', () => {
       handleEvent();
     });
