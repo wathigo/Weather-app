@@ -63,11 +63,13 @@ const DomManger = (() => {
     }
     const handleEvent = () => {
       let location = document.querySelector('#location').value;
-      Service.getData(location)
+      Service.getData(location);
+      Service.getDataF(location);
     }
 
     const startApp = () => {
       Service.getData(defaultLocation);
+      Service.getDataF(defaultLocation);
       document.querySelector('#search').addEventListener('click', () => {
         handleEvent();
       })
@@ -76,68 +78,74 @@ const DomManger = (() => {
 
     const currentJsonData = (data) => {
       console.log(data);
-      let main = data.weather[0].main;
-      document.querySelector('.location').textContent = data.name;
-      document.querySelector('.description').textContent = data.weather[0].description;
-      document.querySelector('.temp').textContent = data.main.temp + '°c';
-      if(checkRain(main)){
-        document.querySelector('.snow').style.display = 'none';
-        document.querySelector('body').backgroundImage = 'none';
-        Rainy.startRaining();
-      }else if(checkWind(main)){
-        document.querySelector('.snow').style.display = 'none';
-        document.querySelector('body').backgroundImage = 'none';
-        Transform.initializeTranformations();
-        document.querySelectorAll('.cloudLayer').forEach(node => {
-          node.classList.add('.wind-rotation');
-        })
-      }else if(checkSun(main)){
-        if(document.querySelector('.snow') !== null){
+      if((typeof data) === 'number'){
+        let temp = document.querySelector('.temp').textContent + '  ' + data + 'F'
+        document.querySelector('.temp').textContent = temp
+      }else{
+        let main = data.weather[0].main;
+        document.querySelector('.location').textContent = data.name;
+        document.querySelector('.description').textContent = data.weather[0].description;
+        document.querySelector('.temp').textContent = data.main.temp + '°c';
+        if(checkRain(main)){
           document.querySelector('.snow').style.display = 'none';
-        }
-        if(document.querySelector('#rainy-canvas') !== null){
-          document.querySelector('#rainy-canvas').style.display = 'none';
-        }
-        document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
-      }else if(checkClouds(main)){
-        console.log('clouds@')
-        if(document.querySelector('.snow') !== null){
+          document.querySelector('body').backgroundImage = 'none';
+          Rainy.startRaining();
+        }else if(checkWind(main)){
           document.querySelector('.snow').style.display = 'none';
-        }
-        if(document.querySelector('#rainy-canvas') !== null){
-          document.querySelector('#rainy-canvas').style.display = 'none';
-        }
-        document.querySelector('body').backgroundImage = 'none';
-        document.querySelectorAll('.cloudLayer').forEach(node => {
-          node.style.display = 'block';
-        })
-        Transform.initializeTranformations();
-      }else if(clearSky(main)){
-        if(document.querySelector('.snow') !== null ){
-          document.querySelector('.snow').style.display = 'none';
-        }
-        document.querySelector('body').backgroundImage = 'none';
-        if(document.querySelector('#rainy-canvas') !== null ){
-          document.querySelector('#rainy-canvas').style.display = 'none';
-        }
-        document.querySelectorAll('.cloudLayer').forEach(node => {
-          node.style.display = 'none';
-        })
+          document.querySelector('body').backgroundImage = 'none';
+          Transform.initializeTranformations();
+          document.querySelectorAll('.cloudLayer').forEach(node => {
+            node.classList.add('.wind-rotation');
+          })
+        }else if(checkSun(main)){
+          if(document.querySelector('.snow') !== null){
+            document.querySelector('.snow').style.display = 'none';
+          }
+          if(document.querySelector('#rainy-canvas') !== null){
+            document.querySelector('#rainy-canvas').style.display = 'none';
+          }
+          document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
+        }else if(checkClouds(main)){
+          console.log('clouds@')
+          if(document.querySelector('.snow') !== null){
+            document.querySelector('.snow').style.display = 'none';
+          }
+          if(document.querySelector('#rainy-canvas') !== null){
+            document.querySelector('#rainy-canvas').style.display = 'none';
+          }
+          document.querySelector('body').backgroundImage = 'none';
+          document.querySelectorAll('.cloudLayer').forEach(node => {
+            node.style.display = 'block';
+          })
+          Transform.initializeTranformations();
+        }else if(clearSky(main)){
+          if(document.querySelector('.snow') !== null ){
+            document.querySelector('.snow').style.display = 'none';
+          }
+          document.querySelector('body').backgroundImage = 'none';
+          if(document.querySelector('#rainy-canvas') !== null ){
+            document.querySelector('#rainy-canvas').style.display = 'none';
+          }
+          document.querySelectorAll('.cloudLayer').forEach(node => {
+            node.style.display = 'none';
+          })
 
-      }else if(checkSnow(main)){
-        console.log('Snowinbg')
-        if(document.querySelector('#rainy-canvas') !== null ){
-          document.querySelector('#rainy-canvas').style.display = 'none';
+        }else if(checkSnow(main)){
+          console.log('Snowinbg')
+          if(document.querySelector('#rainy-canvas') !== null ){
+            document.querySelector('#rainy-canvas').style.display = 'none';
+          }
+          document.querySelectorAll('.cloudLayer').forEach(node => {
+            node.style.display = 'none';
+          })
+
+          document.querySelector('body').backgroundImage = 'url(./images/bg.jpg)';
+          document.querySelector('.snow').style.display = 'block';
+
+
         }
-        document.querySelectorAll('.cloudLayer').forEach(node => {
-          node.style.display = 'none';
-        })
-
-        document.querySelector('body').backgroundImage = 'url(./images/bg.jpg)';
-        document.querySelector('.snow').style.display = 'block';
-
-
       }
+
       startTime();
     }
 
