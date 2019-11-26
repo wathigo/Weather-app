@@ -33,7 +33,7 @@ const Clouds = (() => {
   const createCloud = () => {
     const div = document.createElement('div');
     div.className = 'cloudBase';
-    let t = `translateX( ${randomX()}px ) \
+    const t = `translateX( ${randomX()}px ) \
       translateY( ${randomY()}px ) \
       translateZ( ${randomZ()}px )`;
     div.style.transform = t;

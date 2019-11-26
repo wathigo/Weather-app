@@ -43,7 +43,7 @@ const Snow = (() => {
         0,
         particleArray[i].x,
         particleArray[i].y,
-        particleArray[i].radius,
+        particleArray[i].radius
       );
 
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3');

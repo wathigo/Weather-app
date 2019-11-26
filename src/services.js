@@ -16,7 +16,7 @@ const Service = (() => {
       .then(response => response.json())
       .then((data) => {
         DomManger.currentJsonData(data);
-        getDataF(location)
+        getDataF(location);
       })
       .catch(() => {
         errMsg.style.display = 'block';
