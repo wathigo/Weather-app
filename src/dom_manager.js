@@ -64,7 +64,6 @@ const DomManger = (() => {
   };
 
   const currentJsonData = (data) => {
-    console.log(data);
     if ((typeof data) === 'number') {
       const temp = `${document.querySelector('.temp').textContent}  ${data}F`;
       document.querySelector('.temp').textContent = temp;
@@ -93,7 +92,6 @@ const DomManger = (() => {
         }
         document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
       } else if (checkClouds(main)) {
-        console.log('clouds@');
         if (document.querySelector('.snow') !== null) {
           document.querySelector('.snow').style.display = 'none';
         }
@@ -117,7 +115,6 @@ const DomManger = (() => {
           node.style.display = 'none';
         });
       } else if (checkSnow(main)) {
-        console.log('Snowinbg');
         if (document.querySelector('#rainy-canvas') !== null) {
           document.querySelector('#rainy-canvas').style.display = 'none';
         }
