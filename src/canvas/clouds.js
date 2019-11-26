@@ -51,7 +51,7 @@ const Clouds = (() => {
         a: randomA(),
         s: randomS(),
       };
-      let d = `translateX( ${randomX()}px ) \
+      const d = `translateX( ${randomX()}px ) \
       translateY( ${randomY()}px ) \
       translateZ( ${randomZ()}px ) \
       rotateZ( ${randomA()}deg ) \
