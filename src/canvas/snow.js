@@ -47,8 +47,8 @@ const Snow = (() => {
       );
 
       gradient.addColorStop(0, 'rgba(255, 255, 255, 0.3');
-      // gradient.addColorStop(.8, 'rgba(210, 236, 242,' + particleArray[i].opacity + ')');
-      // gradient.addColorStop(1, 'rgba(237, 247, 249,' + particleArray[i].opacity + ')');
+      gradient.addColorStop(.8, 'rgba(210, 236, 242,' + particleArray[i].opacity + ')');
+      gradient.addColorStop(1, 'rgba(237, 247, 249,' + particleArray[i].opacity + ')');
 
 
       context.beginPath();
@@ -58,7 +58,7 @@ const Snow = (() => {
         particleArray[i].radius,
         0,
         Math.PI * 2,
-        false,
+        false
       );
       context.fillStyle = gradient;
       context.fill();
