@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://raw.githack.com/wathigo/Weather-app/dom-tasks/dist/index.html">
-    <img src="src/logo.png" alt="Logo">
+    <img src="src/images/logo.png" alt="Logo">
   </a>
 
   <h3 align="center">Weather App</h3>
@@ -33,7 +33,7 @@
 ## About The Project
 
   <a href="https://raw.githack.com/wathigo/Weather-app/dom-tasks/dist/index.html">
-    <img src="./src/weather.png" alt="Logo">
+    <img src="src/images/weather.png" alt="Logo">
   </a>
 
 Based on the [The Weather App](https://www.theodinproject.com/courses/javascript/lessons/weather-app) in the odin project as a part of the Microverse curriculum.
