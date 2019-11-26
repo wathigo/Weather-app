@@ -112,7 +112,7 @@ const DomManger = (() => {
         document.querySelectorAll('.cloudLayer').forEach((node) => {
           node.style.display = 'none';
         });
-      } else if (checkSnow(main)) {
+      } else (checkSnow(main)) {
         if (document.querySelector('#rainy-canvas') !== null) {
           document.querySelector('#rainy-canvas').style.display = 'none';
         }
