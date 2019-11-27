@@ -15,6 +15,8 @@ const DomManger = (() => {
   const fog = /FOG/g;
   const errMsg = document.querySelector('.errmsg');
 
+  let currentCelciusTemp, currentFahrenheitTemp;
+
   const defaultLocation = 'London,uk';
 
   const checkRain = (str) => str.toUpperCase().match(rain) || str.toUpperCase().match(drizzle);
@@ -61,15 +63,26 @@ const DomManger = (() => {
     Snow.startSnowing();
   };
 
+  const toggleTemp = () => {
+    if(document.querySelector('.temp').textContent === currentCelciusTemp){
+      document.querySelector('.temp').textContent = currentFahrenheitTemp;
+    } else {
+      document.querySelector('.temp').textContent = currentCelciusTemp;
+    }
+  }
+
   const currentJsonData = (data) => {
     if ((typeof data) === 'number') {
-      const temp = `${document.querySelector('.temp').textContent}  ${data}F`;
-      document.querySelector('.temp').textContent = temp;
+      currentFahrenheitTemp = `${data}F`
     } else {
       const { main } = data.weather[0];
       document.querySelector('.location').textContent = data.name;
       document.querySelector('.description').textContent = data.weather[0].description;
       document.querySelector('.temp').textContent = `${data.main.temp}°c`;
+      document.querySelector('.check').addEventListener('click', ()=>{
+        toggleTemp()
+      })
+      currentCelciusTemp = `${data.main.temp}°c`;
       if (checkRain(main)) {
         document.querySelector('.snow').style.display = 'none';
         document.querySelector('body').backgroundImage = 'none';
