@@ -85,7 +85,6 @@ const DomManger = (() => {
       document.querySelector('.temp').textContent = `${data.main.temp}°c`;
       currentCelciusTemp = `${data.main.temp}°c`;
       if (checkRain(main)) {
-        console.log('Raining')
         document.querySelector('.snow').style.display = 'none';
         document.querySelector('body').backgroundImage = 'none';
         document.querySelector('#viewport').style.display = 'none';
