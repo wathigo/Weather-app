@@ -65,7 +65,7 @@ const DomManger = (() => {
   };
 
   const toggleTemp = () => {
-    if(document.querySelector('.temp').textContent === currentCelciusTemp) {
+    if (document.querySelector('.temp').textContent === currentCelciusTemp) {
       document.querySelector('.temp').textContent = currentFahrenheitTemp;
     } else {
       document.querySelector('.temp').textContent = currentCelciusTemp;
@@ -74,7 +74,7 @@ const DomManger = (() => {
 
   const currentJsonData = (data) => {
     if ((typeof data) === 'number') {
-      currentFahrenheitTemp = `${data}F`
+      currentFahrenheitTemp = `${data}F`;
     } else {
       const { main } = data.weather[0];
       document.querySelector('.location').textContent = data.name;
