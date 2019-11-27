@@ -75,19 +75,26 @@ const DomManger = (() => {
   const currentJsonData = (data) => {
     if ((typeof data) === 'number') {
       currentFahrenheitTemp = `${data}F`;
+      document.querySelector('.check').addEventListener('click', () => {
+        toggleTemp();
+      });
     } else {
       const { main } = data.weather[0];
       document.querySelector('.location').textContent = data.name;
       document.querySelector('.description').textContent = data.weather[0].description;
       document.querySelector('.temp').textContent = `${data.main.temp}°c`;
-      document.querySelector('.check').addEventListener('click', () => {
-        toggleTemp();
-      });
       currentCelciusTemp = `${data.main.temp}°c`;
       if (checkRain(main)) {
+        console.log('Raining')
         document.querySelector('.snow').style.display = 'none';
         document.querySelector('body').backgroundImage = 'none';
-        Rainy.startRaining();
+        document.querySelector('#viewport').style.display = 'none';
+        document.querySelectorAll('.cloudLayer').forEach((node) => {
+          node.style.display = 'none';
+        });
+        if (document.querySelector('#rainy-canvas') === null) {
+          Rainy.startRaining();
+        }
       } else if (checkWind(main)) {
         document.querySelector('.snow').style.display = 'none';
         document.querySelector('body').backgroundImage = 'none';
@@ -100,7 +107,7 @@ const DomManger = (() => {
           document.querySelector('.snow').style.display = 'none';
         }
         if (document.querySelector('#rainy-canvas') !== null) {
-          document.querySelector('#rainy-canvas').style.display = 'none';
+          document.querySelector('#rainy-canvas').parentNode.removeChild(document.querySelector('#rainy-canvas'));
         }
         document.querySelector('body').backgroundImage = 'url(./images/sunny.jpeg)';
       } else if (checkClouds(main)) {
@@ -108,9 +115,10 @@ const DomManger = (() => {
           document.querySelector('.snow').style.display = 'none';
         }
         if (document.querySelector('#rainy-canvas') !== null) {
-          document.querySelector('#rainy-canvas').style.display = 'none';
+          document.querySelector('#rainy-canvas').parentNode.removeChild(document.querySelector('#rainy-canvas'));
         }
         document.querySelector('body').backgroundImage = 'none';
+        document.querySelector('#viewport').style.display = 'block';
         document.querySelectorAll('.cloudLayer').forEach((node) => {
           node.style.display = 'block';
         });
@@ -121,14 +129,15 @@ const DomManger = (() => {
         }
         document.querySelector('body').backgroundImage = 'none';
         if (document.querySelector('#rainy-canvas') !== null) {
-          document.querySelector('#rainy-canvas').style.display = 'none';
+          document.querySelector('#rainy-canvas').style.visibility = 'hidden';
         }
         document.querySelectorAll('.cloudLayer').forEach((node) => {
           node.style.display = 'none';
         });
+        document.querySelector('#viewport').style.display = 'block';
       } else {
         if (document.querySelector('#rainy-canvas') !== null) {
-          document.querySelector('#rainy-canvas').style.display = 'none';
+          document.querySelector('#rainy-canvas').parentNode.removeChild(document.querySelector('#rainy-canvas'));
         }
         document.querySelectorAll('.cloudLayer').forEach((node) => {
           node.style.display = 'none';
