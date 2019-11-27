@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather app</title>
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Saira+Condensed&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="viewport" >
+      <div id="world" >
+      </div>
+    </div>
+    <canvas id="canvas" class="snow"></canvas>
+    <div class="content">
+      <div class="search">
+        <input type="text" name="location" id="location" value="" placeholder="Add a location">
+        <button type="button" name="button" id="search">Search</button>
+      </div>
+
+      <div class="weathercont">
+        <div class="errmsg">LOCATION NOT FOUND!</div>
+        <h3 class="location">LOCATION</h3>
+        <p class="description"></p>
+        <p class="temper">Now</p>
+        <label class="switch right">
+          <input type="checkbox" class="check" checked>
+          <span class="slider round"></span>
+        </label>
+        <h2 class="temp">10°c</h2>
+
+        <div class="currenttime">
+        </div>
+    <script src="https://github.com/mubaidr/rainyday.js/blob/master/docs/js/rainyday.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
