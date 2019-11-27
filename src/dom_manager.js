@@ -128,7 +128,7 @@ const DomManger = (() => {
         }
         document.querySelector('body').backgroundImage = 'none';
         if (document.querySelector('#rainy-canvas') !== null) {
-          document.querySelector('#rainy-canvas').style.visibility = 'hidden';
+          document.querySelector('#rainy-canvas').parentNode.removeChild(document.querySelector('#rainy-canvas'));
         }
         document.querySelectorAll('.cloudLayer').forEach((node) => {
           node.style.display = 'none';
