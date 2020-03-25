@@ -32,9 +32,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-  <a href="https://raw.githack.com/wathigo/Weather-app/dom-tasks/dist/index.html">
+  <p align="center">
     <img src="src/images/weather.png" alt="Logo">
-  </a>
+  </p>
 
 Based on the [The Weather App](https://www.theodinproject.com/courses/javascript/lessons/weather-app) in the odin project as a part of the Microverse curriculum.
 
