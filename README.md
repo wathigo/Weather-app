@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="https://raw.githack.com/wathigo/Weather-app/dom-tasks/dist/index.html">
+  <a href="https://wathigo.github.io/Weather-app/dist/">
     <img src="src/images/logo.png" alt="Logo">
   </a>
 
@@ -10,7 +10,7 @@
     JavaScript Project
     <br />
     <br />
-    <a href="https://raw.githack.com/wathigo/Weather-app/dom-tasks/dist/index.html">View Demo</a>
+    <a href="https://wathigo.github.io/Weather-app/dist/">View Demo</a>
     ·
     <a href="https://github.com/wathigo/Weather-app/issues">Report Bug</a>
     ·
