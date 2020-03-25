@@ -73,6 +73,7 @@ const DomManger = (() => {
   };
 
   const currentJsonData = (data) => {
+    console.log(data)
     if ((typeof data) === 'number') {
       currentFahrenheitTemp = `${data}F`;
       document.querySelector('.check').addEventListener('click', () => {
